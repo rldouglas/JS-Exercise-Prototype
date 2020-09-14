@@ -7,6 +7,7 @@
         + If a plane lands, its `isFlying` property is set to false.
 */
 
+
 // EXAMPLE SOLUTION CODE:
 function Airplane(name) {
   this.name = name;
@@ -39,9 +40,27 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
 
 }
+Person.prototype.toString = function () {
+return `${this.name}; ${this.age}`;
+};
+
+Person.prototype.eat = function (someFood) {
+if (this.stomach.length < 10) {
+this.stomach.push(someFood);
+}
+
+Person.prototype.poop = function () {
+  this.stomach = []
+}
+
+
+
 
 /*
   TASK 2
@@ -57,9 +76,25 @@ function Person() {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
-
+function Car(miles, milesPerGallon) {
+  this.miles = miles;
+  this.milesPerGallon = milesPerGallon;
+  this.odometer = 0;
+  this.tank = 0;
 }
+
+Car.prototype.fill = function(gallons) {
+  this.tank += gallons;
+}
+
+Car.prototype.drive = function(distance) {
+  this.milesPerGallon = 15;
+  if (this.milesPerGallon * this.tank >= distance) {
+  this.odometer += distance;
+  this.tank -= distance / this.milesPerGallon
+  { 
+    console.log(this.milesPerGallon * this.tank)
+  }
 
 /*
   TASK 3
@@ -68,28 +103,34 @@ function Car() {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
+function Baby(name, age, favoriteToy) {
+  this.name = name;
+  this.age = age;
+  this.favoriteToy = favoriteToy;
 
 }
+Baby.prototype.play = function () {
+
+}
+console.log(Baby, favoriteToy)
 
 /* 
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. is the function called in the global scope
+  2. is the function called as a method
+  3. is the function called by something new
+  4. is the function called by bind?
 */
 
 
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
-if (typeof exports !== 'undefined') {
+/*if (typeof exports !== 'undefined') {
   module.exports = module.exports || {}
   if (Airplane) { module.exports.Airplane = Airplane }
   if (Person) { module.exports.Person = Person }
   if (Car) { module.exports.Car = Car }
   if (Baby) { module.exports.Baby = Baby }
-}
